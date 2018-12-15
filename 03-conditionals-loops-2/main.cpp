@@ -1,65 +1,68 @@
 #include <iostream>
-#include <string>
 #include <cmath>
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
-int main()
-{
-	int kMaxIters = 1000000;
 
-	double x1, x2, dx, eps;
-	cout << "ln(1-x), -1 <= x < 1\n";
-check:
-	cout << "Enter x1, x2, dx, eps:\n";
-	cin >> x1 >> x2 >> dx >> eps;
-	if (dx <= 0 || eps <= 0 || x1 < -1 || x1 > x2 || x2 >= 1)
-	{
-		cout << "\nInput error.\n" << endl;
-		goto check;
+
+int main() {
+	const int kMaxIters = 100;
+	const double kE = 2.71828182845904523536; // e = 2.7
+
+	double xn, xk, dx, eps;
+	cout << "Enter xn -> ";
+	cin >> xn;
+	cout << "Enter xk (xk >= xn) -> ";
+	cin >> xk;
+	cout << "Enter dx (dx > 0) -> ";
+	cin >> dx;
+	cout << "Enter eps (eps > 0) -> ";
+	cin >> eps;
+
+	if (dx <= 0) {
+		cout << "\nInvalid dx. Must be: dx > 0.\n";
 	}
-
-	cout << string(67, '-') << endl;
-	cout << "|" << setw(9) << "x" << setw(9);
-	cout << "|" << setw(15) << "ln(1-x) cmath" << setw(3);
-	cout << "|" << setw(15) << "ln(1-x) mine" << setw(3);
-	cout << "|" << setw(6) << "n" << setw(7) << "|\n";
-	cout << string(67, '-') << endl;
-
-	cout << fixed;
-	cout.precision(6);
-
-	double x = x1;
-	while (x <= x2)
-	{
-		cout << "|" << setw(13) << x << setw(5) << "|";
-		cout << setw(13) << log(1 - x) << setw(5) << "|";
-
-		int n;
-		double ln = 0;
-		for (n = 1; n < kMaxIters; n++)
-		{
-			double nth_term = -pow(x, n) / n;
-			ln += nth_term;
-
-			if (abs(nth_term) < eps) break;
-		}
-
-		if (n == kMaxIters)
-		{
-			cout << setw(15) << "excess limit" << setw(3) << "|";
-			cout << setw(7) << " " << setw(6) << "|\n";
-		}
-		else
-		{
-			cout << setw(13) << ln << setw(5) << "|";
-			cout << setw(7) << n << setw(6) << "|\n";
-		}
-
-		x += dx;
+	else if (eps <= 0) {
+		cout << "\nInvalid eps. Must be: eps > 0.\n";
 	}
-	cout << string(67, '-');
+	else if (xn > xk) {
+		cout << "\nInvalid xk. Must be: xk >= xn.\n";
+	}
+	else {
+		cout << string(74, '-') << endl;
+		cout << "|         x         ";
+		cout << "|   e^(-x^2)(mine)  ";
+		cout << "|  e^(-x^2))(cmath) ";
+		cout << "| iterations |\n";
+		cout << string(74, '-') << endl;
+
+		cout << fixed;
+		cout.precision(5);
+
+		for (; xn <= xk; xn += dx) {
+			int n = 1;
+			double nth_term = 1;
+			double my_f = 1;
+			while (abs(nth_term) > eps) {
+				nth_term = pow((-1), n) * ((pow(xn, n*2)) / (tgamma(n + 1)));
+				my_f += nth_term;
+				n++;
+				if (n > kMaxIters) break;
+			}
+
+			cout << "|" << setw(13) << xn << setw(7) << "|" << setw(14);
+			if (n <= kMaxIters)
+				cout << my_f << setw(6) << "|";
+			else
+				cout << " limit is exceeded |";
+			cout << setw(14) << pow(kE,-pow(xn,2)) << setw(6) << "|";
+			cout << setw(7) << n << setw(7) << "|\n";
+
+		}
+		cout << string(74, '-');
+	}
 
 	return 0;
 }
