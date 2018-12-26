@@ -6,7 +6,6 @@ int main() {
 
 	srand((unsigned)time(NULL));
 
-	//generation array 
 	int index_max = 0;
 	array[0] = int(pow(-1, rand() % 2))*(rand() % 10);
 	for (int i = 1; i < kArraySize; i++) {

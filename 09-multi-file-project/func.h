@@ -14,7 +14,6 @@ double SumAfterSubzeroElement(double a[], int const size, int max);
 
 bool InInterval(double x, double a, double b);
 
-int CutArray(double ar[], double a, double b, int const size);
-
 void SortArray(double a[], int const size);
 
+int CutArray(double ar[], double a, double b, int const size);

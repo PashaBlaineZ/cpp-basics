@@ -20,7 +20,7 @@ int main() {
 	cin >> xk;
 	cout << "Enter dx (dx > 0) -> ";
 	cin >> dx;
-//cout << "  division by 0  |\n";
+	//cout << "  division by 0  |\n";
 	if (dx <= 0) {
 		cout << "\nInvalid dx. Must be: dx > 0.\n";
 	}
@@ -39,7 +39,7 @@ int main() {
 			cout << "|" << setw(11) << xn << setw(7) << "|";
 
 			double f = 0.0;
-			if ((xn-1) < kEps && abs(b-xn) > kEps)
+			if ((xn - 1) < kEps && abs(b - xn) > kEps)
 			{
 				f = a * pow(xn, 2) + b;
 			}
@@ -65,7 +65,7 @@ int main() {
 			int cc = static_cast<int>(c);
 
 			cout << setw(11);
-			if (((ac|bc)^(bc&cc))!=0)
+			if (((ac | bc) ^ (bc&cc)) != 0)
 				cout << f;
 			else
 				cout << static_cast<int>(f);

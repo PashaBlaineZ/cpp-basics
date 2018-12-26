@@ -46,7 +46,7 @@ int main() {
 			double nth_term = 1;
 			double my_f = 1;
 			while (abs(nth_term) > eps) {
-				nth_term = pow((-1), n) * ((pow(xn, n*2)) / (tgamma(n + 1)));
+				nth_term = pow((-1), n) * ((pow(xn, n * 2)) / (tgamma(n + 1)));
 				my_f += nth_term;
 				n++;
 				if (n > kMaxIters) break;
@@ -57,7 +57,7 @@ int main() {
 				cout << my_f << setw(6) << "|";
 			else
 				cout << " limit is exceeded |";
-			cout << setw(14) << pow(kE,-pow(xn,2)) << setw(6) << "|";
+			cout << setw(14) << pow(kE, -pow(xn, 2)) << setw(6) << "|";
 			cout << setw(7) << n << setw(7) << "|\n";
 
 		}

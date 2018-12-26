@@ -41,7 +41,7 @@ void CycleDown(int **a, int N, int M, int n) {
 		for (int c = 0; c < M; c++)
 		{
 			int buf = a[N - 1][c];
-			for (int r = N-1; r >0; r--)
+			for (int r = N - 1; r > 0; r--)
 			{
 				a[r][c] = a[r - 1][c];
 			}
@@ -56,10 +56,10 @@ void CycleRight(int **a, int N, int M, int n) {
 	{
 		for (int r = 0; r < N; r++)
 		{
-			int buf = a[r][M-1];
-			for (int c = M -1; c > 0; c--)
+			int buf = a[r][M - 1];
+			for (int c = M - 1; c > 0; c--)
 			{
-				a[r][c] = a[r][c-1];
+				a[r][c] = a[r][c - 1];
 			}
 			a[r][0] = buf;
 		}
@@ -67,18 +67,18 @@ void CycleRight(int **a, int N, int M, int n) {
 }
 
 int main() {
-	
+
 	int N = 3;
 	int M = 4;
 
-	int **array = new int*[N];    
+	int **array = new int*[N];
 	for (int i = 0; i < N; i++) {
 		array[i] = new int[M];
 	}
 
 	ReadArray(array, N, M);
 	PrintArray(array, N, M);
-	
+
 	while (true)
 	{
 		cout << "\nEnter \"1\" for down cycle of \"2\" for right cyle -> ";
@@ -86,7 +86,7 @@ int main() {
 		cin >> select;
 		if (select == "2") {
 			cout << "Enter n - number of cycle spin -> ";
-			int n; 
+			int n;
 			cin >> n;
 			CycleRight(array, N, M, n);
 			PrintArray(array, N, M);
@@ -103,7 +103,7 @@ int main() {
 		else {
 			cout << "\n" << string(17, '-');
 			cout << "\n Invalid input!\n";
-			cout << string(17, '-') <<"\n";
+			cout << string(17, '-') << "\n";
 		}
 	}
 

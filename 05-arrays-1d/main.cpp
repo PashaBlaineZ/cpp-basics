@@ -42,7 +42,7 @@ unsigned int IndexOfMaxModuloElement(double a[], int const size) {
 
 double SumAfterSubzeroElement(double a[], int const size, int max) {
 	double sum = 0;
-	for (int i = max+1; i < size; i++)
+	for (int i = max + 1; i < size; i++)
 	{
 		sum += a[i];
 	}
@@ -50,9 +50,9 @@ double SumAfterSubzeroElement(double a[], int const size, int max) {
 }
 
 bool InInterval(double x, double a, double b) {
-	if (x >= a&&x <= b)
+	if (x >= a && x <= b)
 		return true;
-	else 
+	else
 		return false;
 }
 
@@ -70,9 +70,9 @@ int CutArray(double ar[], double a, double b, int const size) {
 void SortArray(double a[], int const size) {
 	for (int i = 0; i < size; i++)
 	{
-		for (int j = 0; j < size-i-1; j++)
+		for (int j = 0; j < size - i - 1; j++)
 		{
-			if (abs(a[j])>abs(a[j+1]))
+			if (abs(a[j]) > abs(a[j + 1]))
 			{
 				swap(a[j], a[j + 1]);
 			}
@@ -83,7 +83,7 @@ void SortArray(double a[], int const size) {
 int main() {
 	int const kArraySize = 10;
 	double array[kArraySize];
-	
+
 	srand((unsigned)time(NULL));
 
 	//generation array 
@@ -103,7 +103,7 @@ int main() {
 	cout << IndexOfMaxModuloElement(array, kArraySize) << endl;
 
 	cout << "\nSum max after modulo element = ";
-	if (kArraySize-index_max == 1) {
+	if (kArraySize - index_max == 1) {
 		cout << "Error! Max modulo element is last in array!\n\n";
 	}
 	else {

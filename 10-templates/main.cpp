@@ -7,7 +7,7 @@ using namespace std;
 
 template<class T>
 void ReadArray(T **a, int N, int M, string name) {
-	ifstream fin(name+".txt");
+	ifstream fin(name + ".txt");
 	if (!fin.is_open()) {
 		cout << "can't open file" << endl;
 	}
@@ -113,7 +113,7 @@ void start(string name) {
 }
 
 int main() {
-	error:
+error:
 	cout << "Select the data type (0-integer, 1-double, 2-float): ";
 	string select;
 	cin >> select;

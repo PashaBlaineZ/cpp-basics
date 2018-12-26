@@ -11,7 +11,7 @@ struct NOTE
 	int bern_date[3];
 };
 
-void AddNote(NOTE *M,int const size) {
+void AddNote(NOTE *M, int const size) {
 	for (int i = 0; i < size; i++)
 	{
 		cout << i + 1 << ". Note\n";
@@ -26,9 +26,9 @@ void AddNote(NOTE *M,int const size) {
 }
 
 void SortNote(NOTE *M, int const size) {
-	for (int i = 0; i < size-1; i++)
+	for (int i = 0; i < size - 1; i++)
 	{
-		for (int j = 0; j < size-i-1; j++)
+		for (int j = 0; j < size - i - 1; j++)
 		{
 			if (M[j].full_name.compare(M[j + 1].full_name) > 0)
 				swap(M[j], M[j + 1]);
@@ -47,7 +47,7 @@ string DateConvert(int a[]) {
 	return date;
 }
 
-void PrintNote(NOTE M[],int const size) {
+void PrintNote(NOTE M[], int const size) {
 	cout << string(61, '-') << endl;
 	cout << "|" << setw(21) << "Full name";
 	cout << "|" << setw(21) << "number";
@@ -58,14 +58,14 @@ void PrintNote(NOTE M[],int const size) {
 	{
 		cout << "|" << setw(21) << M[i].full_name;
 		cout << "|" << setw(21) << M[i].number;
-		
+
 		cout << "|" << setw(15) << DateConvert(M[i].bern_date);
 		cout << "|\n";
 	}
 	cout << string(61, '-') << endl;
 }
 
-void PrintFindNote(NOTE M[],int const size, string find) {
+void PrintFindNote(NOTE M[], int const size, string find) {
 	bool finded = false;
 	for (int i = 0; i < size; i++)
 	{
@@ -84,7 +84,7 @@ void PrintFindNote(NOTE M[],int const size, string find) {
 int main() {
 	int const kSize = 2;
 	NOTE M[kSize];
-	
+
 	AddNote(M, kSize);
 	PrintNote(M, kSize);
 
