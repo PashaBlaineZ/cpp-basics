@@ -1,52 +1,41 @@
 #include <iostream>
-#include <string>
 #include <fstream>
+#include <string>
+#include <locale>
 
 using namespace std;
 
-bool IsVowels(char s) {
-	switch (s)
-	{
-	case 'A':
-		return true;
-	case 'O':
-		return true;
-	case 'Y':
-		return true;
-	case 'E':
-		return true;
-	case 'I':
-		return true;
-	case 'U':
-		return true;
-	default:
-		return false;
-	}
-}
+bool IsVowel(char letter);
 
 int main() {
-	string s, file_name;
 
-	cout << "Write  file name (default name 'a') -> ";
-	cin >> file_name;
-	file_name += ".txt";
-	ifstream fin(file_name);
+    ifstream fin("text.txt");
+    if (!fin) {
+        cout << "File \"text.txt\" not found.";
+        return 1;
+    }
 
-	if (!fin.is_open()) {
-		cout << "can't open file!" << endl;
-		return 1;
-	}
-	while (getline(fin, s, '\n')) {
-		for (int i = 0; i < s.length(); i++)
-		{
-			if (IsVowels(s[i]))
-			{
-				s[i] = tolower(s[i]);
-			}
-		}
-		cout << s << endl;
-	}
+    string line;
+    while (getline(fin, line)) {
+        if (IsVowel(line[0]))
+            line[0] = toupper(line[0], locale());
 
-	fin.close();
-	return 0;
+        for (size_t i = 1; i < line.length(); i++)
+            if (IsVowel(line[i]) && line[i - 1] == ' ')
+                line[i] = toupper(line[i], locale());
+
+        cout << line << endl;
+    }
+
+    fin.close();
+    return 0;
+}
+
+bool IsVowel(char letter) {
+    letter = tolower(letter, locale());
+    char vowels[] = { 'a', 'e', 'i', 'o', 'u' };
+    for (int i = 0; i < 5; i++)
+        if (letter == vowels[i])
+            return 1;
+    return 0;
 }

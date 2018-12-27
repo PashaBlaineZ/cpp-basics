@@ -1,44 +1,34 @@
-#include "func.h"
+#include "functions.h"
 
 int main() {
-	int const kArraySize = 10;
-	double array[kArraySize];
+    int const kArraySize = 10;
+    double arr[kArraySize] = { 0, 1, .2, 3, 0, .5, -6, .1, .5, .3 };
 
-	srand((unsigned)time(NULL));
+    cout << "Starting array:\n";
+    PrintArray(arr, kArraySize);
+    cout << endl;
 
-	int index_max = 0;
-	array[0] = int(pow(-1, rand() % 2))*(rand() % 10);
-	for (int i = 1; i < kArraySize; i++) {
-		array[i] = int(pow(-1, rand() % 2))*(rand() % 10); //[-9..9]
-		if (abs(array[i]) > abs(array[index_max])) {
-			index_max = i;
-		}
-	}
+    double a, b;
+    cout << "\nEnter A: ";
+    cin >> a;
+    cout << "Enter B: ";
+    cin >> b;
+    cout << "Number of elements in [" << a << ", " << b << "]: ";
+    cout << CountElementsInRange(arr, kArraySize, a, b) << endl;
 
-	cout << "Starting Array :" << endl;
-	PrintArray(array, kArraySize);
+    int max_id = FindMaxId(arr, kArraySize);
+    cout << "\nMax element index: " << max_id;
+    cout << "\nSum of elements after max element: ";
+    if (max_id != kArraySize - 1)
+        cout << SumElements(arr, kArraySize, max_id + 1) << endl;
+    else
+        cout << "\nMax element is the last one.\n";
 
-	cout << "\nIndex of max modulo element -> ";
-	cout << IndexOfMaxModuloElement(array, kArraySize) << endl;
 
-	cout << "\nSum max after modulo element = ";
-	if (kArraySize - index_max == 1) {
-		cout << "Error! Max modulo element is last in array!\n\n";
-	}
-	else {
-		cout << SumAfterSubzeroElement(array, kArraySize, index_max);
-		cout << endl << endl;
-	}
+    cout << "\nSorted array (descending by absolute values):\n";
+    SortArray(arr, kArraySize);
+    PrintArray(arr, kArraySize);
+    cout << endl;
 
-	cout << "Enter interval [a;b] (e.g. \"-3 4\" for [-3;4] interval ) -> ";
-	double a, b;
-	cin >> a >> b;
-	if ((a == b) || (a > b))
-		cout << "Invalid interval(must be a<b)!\n\n";
-	else {
-		cout << endl << CutArray(array, a, b, kArraySize) << " elements in ";
-		cout << "[" << a << "," << b << "] interval.\n\n";
-	}
-
-	return 0;
+    return 0;
 }

@@ -1,6 +1,6 @@
 
-# Created by https://www.gitignore.io/api/git,c++,visualstudio
-# Edit at https://www.gitignore.io/?templates=git,c++,visualstudio
+# Created by https://www.gitignore.io/api/c++,windows,visualstudio
+# Edit at https://www.gitignore.io/?templates=c++,windows,visualstudio
 
 ### C++ ###
 # Prerequisites
@@ -36,20 +36,30 @@
 *.out
 *.app
 
-### Git ###
-# Created by git for backups. To disable backups in Git:
-# $ git config --global mergetool.keepBackup false
-*.orig
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
 
-# Created by git when using merge tools for conflicts
-*.BACKUP.*
-*.BASE.*
-*.LOCAL.*
-*.REMOTE.*
-*_BACKUP_*.txt
-*_BASE_*.txt
-*_LOCAL_*.txt
-*_REMOTE_*.txt
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -392,4 +402,4 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-# End of https://www.gitignore.io/api/git,c++,visualstudio
+# End of https://www.gitignore.io/api/c++,windows,visualstudio
